@@ -4,6 +4,7 @@ from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
 from django.http import JsonResponse
 from .models import Property
+from .utils import get_all_properties
 
 
 @method_decorator(cache_page(60 * 15), name='dispatch')  # Cache for 15 minutes
@@ -24,7 +25,7 @@ def property_list(request):
     Response cached in Redis for 15 minutes by the @cache_page decorator.
     Returns JSON in the shape: {"data": [ {property fields...}, ... ] }
     """
-    qs = Property.objects.all().order_by('-created_at')
+    qs = get_all_properties()
     data = []
     for p in qs:
         data.append({
