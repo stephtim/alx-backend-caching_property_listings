@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Property Listings</h1>
+    <div class="row">
+        {% for property in properties %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ property.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">${{ property.price }}</h6>
+                    <p class="card-text">{{ property.description|truncatewords:30 }}</p>
+                    <ul class="list-unstyled">
+                        <li>Location: {{ property.location }}</li>
+                        <li>Bedrooms: {{ property.bedrooms }}</li>
+                        <li>Bathrooms: {{ property.bathrooms }}</li>
+                        <li>Square Feet: {{ property.square_feet }}</li>
+                        <li>Type: {{ property.get_property_type_display }}</li>
+                        <li>Status: {{ property.get_status_display }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p>No properties available.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
