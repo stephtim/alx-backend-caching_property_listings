@@ -60,8 +60,12 @@ WSGI_APPLICATION = 'alx_backend_caching_property_listings.wsgi.application'
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django_db',
+        'USER': 'django_user',
+        'PASSWORD': 'django_password',
+        'HOST': 'postgres',
+        'PORT': '5432',
     }
 }
 
