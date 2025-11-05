@@ -1,4 +1,5 @@
 from django.apps import AppConfig
+import properties.signals  # ensure signals module is importable at module import time
 
 
 class PropertiesConfig(AppConfig):
